@@ -30,4 +30,15 @@ functions:
     events:
       - http:
           path: api/token/{code}
-          method: get        
+          method: get
+  getCalendarEvents:
+    handler: handler.getCalendarEvents
+    environment:
+      CLIENT_ID: ${file(config.json):CLIENT_ID}
+      CLIENT_SECRET: ${file(config.json):CLIENT_SECRET}
+      PROJECT_ID: ${file(config.json):PROJECT_ID}
+      CALENDAR_ID: ${file(config.json):CALENDAR_ID}
+    events:
+      - http:
+          path: api/get-events/{access_token}
+          method: get       
