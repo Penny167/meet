@@ -9,14 +9,25 @@ provider:
   region: eu-west-2
   timeout: 60 # optional, in seconds, default is 6
 functions:
-    getAuthURL:
-      handler: handler.getAuthURL
-      environment:
-        CLIENT_ID: ${file(config.json):CLIENT_ID}
-        CLIENT_SECRET: ${file(config.json):CLIENT_SECRET}
-        PROJECT_ID: ${file(config.json):PROJECT_ID}
-        CALENDAR_ID: ${file(config.json):CALENDAR_ID}
-      events:
-        - http:
+  getAuthURL:
+    handler: handler.getAuthURL
+    environment:
+      CLIENT_ID: ${file(config.json):CLIENT_ID}
+      CLIENT_SECRET: ${file(config.json):CLIENT_SECRET}
+      PROJECT_ID: ${file(config.json):PROJECT_ID}
+      CALENDAR_ID: ${file(config.json):CALENDAR_ID}
+    events:
+      - http:
           path: api/get-auth-url
           method: get
+  getAccessToken:
+    handler: handler.getAccessToken
+    environment:
+      CLIENT_ID: ${file(config.json):CLIENT_ID}
+      CLIENT_SECRET: ${file(config.json):CLIENT_SECRET}
+      PROJECT_ID: ${file(config.json):PROJECT_ID}
+      CALENDAR_ID: ${file(config.json):CALENDAR_ID}
+    events:
+      - http:
+          path: api/token/{code}
+          method: get        
