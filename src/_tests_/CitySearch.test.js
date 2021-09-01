@@ -14,10 +14,18 @@ describe('<CitySearch /> component', () => {
     expect(CitySearchWrapper.find('.suggestions')).toHaveLength(1);
   });
 
-  test('value of text input should equal query typed by user (query state renders correctly)', () => {
+  test('value of text input should equal query state of CitySearch component', () => {
     const CitySearchWrapper = shallow(<CitySearch />);
     const query = CitySearchWrapper.state('query');
     expect(CitySearchWrapper.find('.city').prop('value')).toBe(query);
+  });
+
+  test('query state should update dynamically when user types into text input', () => {
+    const CitySearchWrapper = shallow(<CitySearch />);
+    CitySearchWrapper.setState({ query: 'Munich' });
+    const eventObject = { target: { value: 'Berlin' }};
+    CitySearchWrapper.find('.city').simulate('change', eventObject); // Simulates input value updating to Berlin when user types
+    expect(CitySearchWrapper.state('query')).toBe('Berlin'); // Expect this to update the query state
   });
 
 });
