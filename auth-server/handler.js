@@ -1,5 +1,4 @@
 const { google } = require("googleapis");
-const OAuth2 = google.auth.OAuth2;
 const calendar = google.calendar("v3");
 // Scope is that selected when we registered the app with Google in the API console
 const SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"];
@@ -18,6 +17,7 @@ const credentials = {
 };
 // Using destructuring to extract values needed from credentials
 const { client_secret, client_id, redirect_uris, calendar_id } = credentials;
+
 const oAuth2Client = new google.auth.OAuth2(
   client_id,
   client_secret,
@@ -39,7 +39,7 @@ module.exports.getAuthURL = async () => {
 
 /* This function takes the authorization URL, extracts the code, then uses this to get the access 
 token from Google that is needed to authorise requests to the Calendar API */
-module.exports.getAccessToken = async (event) => { // Why do we use async syntax then not await?
+module.exports.getAccessToken = async (event) => { 
   const oAuth2Client = new google.auth.OAuth2(
     client_id,
     client_secret,
@@ -81,7 +81,7 @@ module.exports.getCalendarEvents = async (event) => {
   );
   const access_token = decodeURIComponent(`${event.pathParameters.access_token}`);
 // Set client credentials using token
-  oAuth2Client.setCredentials({ access_token }); // Check re curly braces here
+  oAuth2Client.setCredentials({ access_token }); 
   return new Promise((resolve, reject) => {
     calendar.events.list(
       {

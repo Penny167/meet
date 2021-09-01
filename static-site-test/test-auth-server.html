@@ -44,14 +44,14 @@
       // This is the URL returned by aws after deploying the function ie the endpoint for the getAuthURL function
       const getAuthURL = "https://4u0nrwzjp5.execute-api.eu-west-2.amazonaws.com/dev/api/get-auth-url";
 
-      getURLElement.onclick = function () { // Why are we not using arrow functions?
+      getURLElement.onclick = function () { 
         fetch(getAuthURL)
           .then(function (response) {
             return response.json();
           })
           .then(function (json) {
             const result = JSON.stringify(json);
-            const { authUrl } = JSON.parse(result); // Why is the variable put in curly braces here?
+            const { authUrl } = JSON.parse(result); // Deconstructing authURL property from the reponse
             resultElement.innerText = result;
             resultLink.href = authUrl;
           });
