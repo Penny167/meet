@@ -51,6 +51,14 @@ describe('<CitySearch /> component', () => {
       return location.toUpperCase().indexOf(query.toUpperCase()) > -1; // why can't we just say location === query?
     });
     expect(CitySearchWrapper.state('suggestions')).toEqual(filteredLocations);
-  })
+  });
+
+  test('value of query state should change when user clicks on suggestion', () => {
+    CitySearchWrapper.setState({ query: 'Berlin' });
+    const suggestions = CitySearchWrapper.state('suggestions');
+    CitySearchWrapper.find('.suggestions li').at(0).simulate('click');
+    expect(CitySearchWrapper.state('query')).toBe(suggestions[0]);
+  });
+
 
 });
