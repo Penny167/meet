@@ -91,15 +91,20 @@ describe('<Event /> component', () => {
     expect(EventWrapper.find('.description')).toHaveLength(1); 
   });
 
-  test('button text should equal buttonText state', () => {
-    const buttonText = EventWrapper.state('buttonText');
-    expect(EventWrapper.find('.button').text()).toBe(buttonText);
+  test('description should be value of description field', () => {
+    const description = event.description;
+    expect(EventWrapper.find('.description').text()).toBe(description); 
+  });
+
+  test('button text should say Show Details when show state is false', () => {
+    EventWrapper.setState({ show: false});
+    expect(EventWrapper.find('.button').text()).toBe('Show details');
   });
 
   test('if button is clicked in default position button text should change to Hide details', () => {
-    EventWrapper.setState({ buttonText: 'Show details'});
+    EventWrapper.setState({ show: false});
     EventWrapper.find('.button').simulate('click');
-    expect(EventWrapper.state('buttonText')).toBe('Hide details');
+    expect(EventWrapper.find('.button').text()).toBe('Hide details');
   })
 
   test('details container style attribute should equal display: none when show state is false', () => {
@@ -113,21 +118,21 @@ describe('<Event /> component', () => {
   })
 
   test('if button is clicked in default/collapsed position show state should change to true', () => {
-    EventWrapper.setState({ buttonText: 'Show details', show: false });
+    EventWrapper.setState({ show: false });
     EventWrapper.find('.button').simulate('click');
     expect(EventWrapper.state('show')).toBe(true);
   }) 
 
   test('if button is clicked in expanded position show state should change back to false', () => {
-    EventWrapper.setState({ buttonText: 'Hide details', show: true });
+    EventWrapper.setState({ show: true });
     EventWrapper.find('.button').simulate('click');
     expect(EventWrapper.state('show')).toBe(false);
   })
 
   test('if button is clicked in expanded position button text should change back to Show details', () => {
-    EventWrapper.setState({ buttonText: 'Hide details'});
+    EventWrapper.setState({ show: true});
     EventWrapper.find('.button').simulate('click');
-    expect(EventWrapper.state('buttonText')).toBe('Show details');
+    expect(EventWrapper.find('.button').text()).toBe('Show details');
   })
 
 });

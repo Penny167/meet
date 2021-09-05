@@ -2,22 +2,11 @@ import React, { Component } from 'react';
 
 class Event extends Component {
   state = {
-    buttonText: 'Show details',
     show: false
   }
 
   toggleDetails = () => {
-    if (this.state.buttonText === 'Show details'){
-      this.setState({ 
-        buttonText: 'Hide details',
-        show: true
-      })
-      } else {
-      this.setState({ 
-      buttonText: 'Show details',
-      show: false
-      })
-    }
+    this.setState({ show: !this.state.show });
   }
 
   render () {
@@ -34,7 +23,7 @@ class Event extends Component {
           <a className="link" href={event.htmlLink}>See details on calendar</a>
           <p className="description">{event.description}</p>
         </div> 
-        <button className="button" onClick={this.toggleDetails}>{this.state.buttonText}</button>
+        <button className="button" onClick={this.toggleDetails}>{this.state.show ? "Hide details" : "Show details"}</button>
       </div>
       
     );
