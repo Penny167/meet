@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import App from '../App';
 import EventList from '../EventList';
 import CitySearch from '../CitySearch';
@@ -24,5 +24,10 @@ describe('<App /> component', () => {
   test('should render the NumberOfEvents component', () => {
     expect(AppWrapper.find(NumberOfEvents)).toHaveLength(1);
   })
+
+});
+
+// Creating a new scope for integration testing
+describe('<App /> integration', () => {
 
 });
