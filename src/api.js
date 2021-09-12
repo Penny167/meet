@@ -10,8 +10,8 @@ export const extractLocations = (events) => {
 
 export const getAccessToken = async () => {
   const accessToken = localStorage.getItem('access_token');
-  const tokenCheck = accessToken && (await checkToken(accessToken)); // I don't know why we need accessToken && here and how tokenCheck can have a property error if it's a boolean?  
-  if (!accessToken || tokenCheck.error) { // I don't understand how tokenCheck can take a property if it's a boolean
+  const tokenCheck = accessToken && (await checkToken(accessToken)); // If accessToken is truthy then checkToken is invoked (and the result is stored in the variable, tokenCheck)
+  if (!accessToken || tokenCheck.error) { 
     await localStorage.removeItem('access_token');
     const searchParams = new URLSearchParams(window.location.search); // Store search params of URL in new object called searchParams
     const code = await searchParams.get('code'); // Retrieve code parameter from the URL. It will be present if we have been redirected from the consent screen; otherwise there will be no code in the URL.
@@ -21,7 +21,7 @@ export const getAccessToken = async () => {
       const { authUrl } = results.data;
       return (window.location.href = authUrl); // Setting the href to the authURL redirects the page to the AuthURL (which now therefore contains the code)
     }
-    return code && getToken(code); // Why do we need return code here and not just return getToken(code)?
+    return code && getToken(code); // If code is truthy then getToken is invoked using the code as the argument
   }
   return accessToken;
 }
@@ -44,7 +44,7 @@ const getToken = async (code) => {
       return res.json();
     })
     .catch((error) => error);
-  access_token && localStorage.setItem("access_token", access_token); // Again I don't know why we need the access_token && here
+  access_token && localStorage.setItem("access_token", access_token); // If the access token is returned then we store it in local storage
   return access_token;
 };
 
@@ -70,7 +70,7 @@ export const getEvents = async () => {
 };
 
 const removeQuery = () => {
-  if (window.history.pushState && window.location.pathname) { // I don't know why window.history.pushState is used here
+  if (window.history.pushState && window.location.pathname) { // I don't know why window.history.pushState is used here - what is this actually saying?
       let newurl = window.location.protocol + "//" + window.location.host + window.location.pathname; // Represents the current URL minus the authorisation code
       window.history.pushState("", "", newurl); // Resets the URL of the current page to be the version with the auth code removed (note that this does not refresh the page)
   } else { // Is this else statement actually needed? Is this to update the URL if we're working offline? Why do we remove the path?
