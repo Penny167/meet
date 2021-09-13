@@ -41,9 +41,9 @@ User stories and scenarios:
 
 3. As a user, I should be able to select the number of events that I want to see, so that I can adjust the amount of information I am presented with to suit my preferences.
 
-  Scenario 1: When user hasn’t specified a number, 32 is the default number.
+  Scenario 1: When user hasn’t specified a number, 12 is the default number.
   
-  Given a user hasn’t specified the number of events that they want to see, when the list of events is displayed, then the default number of events is 32.
+  Given a user hasn’t specified the number of events that they want to see, when the list of events is displayed, then the default number of events is 12.
 
   Scenario 2: User can change the number of events they want to see.
   
