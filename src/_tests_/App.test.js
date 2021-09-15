@@ -48,7 +48,7 @@ describe('<App /> integration', () => {
     AppWrapper.unmount();
   })
 
-  test('App should get list of events matching city selected by the user', async () => {
+  test('App should get list of events matching city selected by the user with default number if no number selected', async () => {
     const AppWrapper = mount(<App />);
     const CitySearchWrapper = AppWrapper.find(CitySearch);
     const locations = extractLocations(mockData);
@@ -59,7 +59,8 @@ describe('<App /> integration', () => {
     await CitySearchWrapper.instance().handleItemClicked(selectedCity);
     const allEvents = await getEvents();
     const eventsToShow = allEvents.filter(event => event.location === selectedCity);
-    expect(AppWrapper.state('events')).toEqual(eventsToShow);
+    const slicedeventsToShow = eventsToShow.slice(0, 12); // 12 is the initial state of numberOfEvents
+    expect(AppWrapper.state('events')).toEqual(slicedeventsToShow);
     AppWrapper.unmount();
   })
   
@@ -98,8 +99,14 @@ describe('<App /> integration', () => {
     AppWrapper.unmount();
   })
 
-  test('Events displayed should reflect both the city selected AND the number of events selected', async () => {
-    
+  test('When the number of events is updated, the events returned should be for the current city selected', async () => {
+    const AppWrapper = mount(<App />);
+    const CitySearchWrapper = AppWrapper.find(CitySearch);
+    CitySearchWrapper.instance().handleItemClicked('Berlin, Germany');
+    await getEvents();
+    AppWrapper.update();
+    expect(AppWrapper.find('.location').at(0).text()).toBe('Berlin, Germany');
+    expect(AppWrapper.find('.Event')).toHaveLength(12);
   })
 
 });

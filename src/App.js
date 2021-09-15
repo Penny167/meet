@@ -12,7 +12,7 @@ class App extends Component {
     events: [],
     locations: [],
     numberOfEvents: 12,
-    currentLocation: ''
+    currentLocation: 'all'
   }
 
   componentDidMount () {
@@ -33,8 +33,22 @@ class App extends Component {
   updateNumberOfEvents = (eventCount) => {
     getEvents()
     .then((events) => {
-      const eventCountEvents = events.slice(0, eventCount);
-      this.setState({ events: eventCountEvents });
+      if (this.state.currentLocation === 'all') {
+        const allLocationsSliced = events.slice(0, eventCount);
+        this.setState(
+          { events: allLocationsSliced,
+            numberOfEvents: eventCount
+          }
+        );
+      } else {
+      const locationEvents = events.filter(event => event.location === this.state.currentLocation);
+      const slicedLocationEvents = locationEvents.slice(0, eventCount);
+      this.setState(
+          { events: slicedLocationEvents,
+            numberOfEvents: eventCount 
+          }
+        );
+      }
     })
   }
 
@@ -49,13 +63,13 @@ class App extends Component {
           }
         );
       } else {
-      const locationEvents = events.filter(event => event.location === location);
-      const slicedLocationEvents = locationEvents.slice(0, this.state.numberOfEvents);
-      this.setState(
-        { events: slicedLocationEvents,
-          currentLocation: location
-        }
-      );
+        const locationEvents = events.filter(event => event.location === location);
+        const slicedLocationEvents = locationEvents.slice(0, this.state.numberOfEvents);
+        this.setState(
+          { events: slicedLocationEvents,
+            currentLocation: location
+          }
+        );
       }
     })
   } 
