@@ -54,7 +54,10 @@ defineFeature(feature, test => {
     });
     and('the user should receive a list of upcoming events in that city', () => {
       AppWrapper.update();
-      expect(AppWrapper.find('.Event')).toHaveLength(19); // 19 of the events in the mock data are located in Berlin
+      expect(AppWrapper.find('.location').at(0).text()).toBe('Berlin, Germany'); // In the unfiltered mock data the location at position 0 would be London
+    });
+    and('the list length should be the number of events currently selected', () => {
+      expect(AppWrapper.find('.Event')).toHaveLength(12); // We expect the default number in this scenario
     });
   });
 

@@ -66,9 +66,12 @@ describe('<App /> integration', () => {
   test('App should get all events if user selects "See all cities"', async () => {
     const AppWrapper = mount(<App />);
     const suggestionItems = AppWrapper.find(CitySearch).find('.suggestions li');
-    await suggestionItems.at(suggestionItems.length - 1).simulate('click'); // See all cities will always be the last position ie length minus one
-    const allEvents = await getEvents();
-    expect(AppWrapper.state('events')).toEqual(allEvents);
+    suggestionItems.at(suggestionItems.length - 1).simulate('click'); // See all cities will always be the last position ie length minus one
+    await getEvents();
+    AppWrapper.update();
+    expect(AppWrapper.state('events')).toHaveLength(12); // I expect the default number as that is current value of number of events
+    expect(AppWrapper.find('.location').at(0).text()).toBe('London, UK'); // Testing to make sure multiple locations returned in line with mock data
+    expect(AppWrapper.find('.location').at(1).text()).toBe('Berlin, Germany');
     AppWrapper.unmount();
   })
 

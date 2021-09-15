@@ -11,7 +11,8 @@ class App extends Component {
   state = {
     events: [],
     locations: [],
-    numberOfEvents: 12
+    numberOfEvents: 12,
+    currentLocation: ''
   }
 
   componentDidMount () {
@@ -40,11 +41,21 @@ class App extends Component {
   updateEvents = (location) => {
     getEvents()
     .then((events) => {
-      if (location === 'all') { 
-        this.setState({ events: events });
+      if (location === 'all') {
+        const allLocationsSliced = events.slice(0, this.state.numberOfEvents);
+        this.setState(
+          { events: allLocationsSliced,
+            currentLocation: 'all'
+          }
+        );
       } else {
       const locationEvents = events.filter(event => event.location === location);
-      this.setState({ events: locationEvents });
+      const slicedLocationEvents = locationEvents.slice(0, this.state.numberOfEvents);
+      this.setState(
+        { events: slicedLocationEvents,
+          currentLocation: location
+        }
+      );
       }
     })
   } 
