@@ -56,7 +56,6 @@ defineFeature(feature, test => {
       AppWrapper.update();
       expect(AppWrapper.find('.Event')).toHaveLength(19); // 19 of the events in the mock data are located in Berlin
     });
-
   });
 
 })
