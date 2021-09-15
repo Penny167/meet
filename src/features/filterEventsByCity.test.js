@@ -50,7 +50,7 @@ defineFeature(feature, test => {
     });
     then('their city should be changed to that city (i.e., “Berlin, Germany”)', () => {
       expect(AppWrapper.find(CitySearch).state('query')).toBe('Berlin, Germany');
-//      expect(AppWrapper.find('.city').text()).toBe('Berlin, Germany'); // why is this not working?
+      expect(AppWrapper.find('.city').prop('value')).toBe('Berlin, Germany');
     });
     and('the user should receive a list of upcoming events in that city', () => {
       AppWrapper.update();
