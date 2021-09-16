@@ -48,7 +48,7 @@ describe('<CitySearch /> component', () => {
     CitySearchWrapper.find('.city').simulate('change', { target: { value: 'Berlin' }});
     const query = CitySearchWrapper.state('query');
     const filteredLocations = locations.filter((location) => {
-      return location.toUpperCase().indexOf(query.toUpperCase()) > -1; // why can't we just say location === query?
+      return location.toUpperCase().indexOf(query.toUpperCase()) > -1; // We don't use === locations because we want partial matches to generate suggestions
     });
     expect(CitySearchWrapper.state('suggestions')).toEqual(filteredLocations);
   });

@@ -14,7 +14,7 @@ defineFeature(feature, test => {
     let AppWrapper;
     when('the user opens the app', () => { AppWrapper = mount(<App />); });
     then('the user should see the list of upcoming events.', () => {
-      AppWrapper.update(); // At what point does componentDidMount() execute? 
+      AppWrapper.update();
       expect(AppWrapper.find('.Event')).toHaveLength(12); // This has to be 12 because we have coded the app to display a default number of events of 12 regardless of locations
       expect(AppWrapper.state().locations).toHaveLength(2); // This tests that the events retrieved are for events from all cities (there are 2 cities within the mock data)
     });

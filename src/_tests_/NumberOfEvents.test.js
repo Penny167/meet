@@ -6,7 +6,7 @@ describe('<NumberOfEvents /> component', () => {
   let NumberOfEventsWrapper;
   
   beforeAll(() => {  
-    NumberOfEventsWrapper = shallow(<NumberOfEvents updateNumberOfEvents={() => {}}/>)
+    NumberOfEventsWrapper = shallow(<NumberOfEvents updateEvents={() => {}}/>)
   });
 
   test('should render text input with class name numberOfEvents', () => {

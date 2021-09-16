@@ -3,9 +3,9 @@ const feature = loadFeature('./src/features/specifyNumberOfEvents.feature');
 import React from 'react';
 import { mount } from 'enzyme';
 import App from '../App';
-import mockData from '../mock-data';
 import { getEvents } from '../api';
 import NumberOfEvents from '../NumberOfEvents';
+import CitySearch from '../CitySearch';
 
 defineFeature(feature, test => {
   
@@ -19,8 +19,12 @@ defineFeature(feature, test => {
     });
   });
 
-  test('User can change the number of events they want to see', ({ given, when, then }) => {
+  test('User can change the number of events they want to see', ({ given, when, then, and }) => {
     given('the list of events is displayed', () => { AppWrapper.update(); });
+    and('the user has selected a city (or all cities)', () => {  
+      const CitySearchWrapper = AppWrapper.find(CitySearch);
+      CitySearchWrapper.instance().handleItemClicked('Berlin, Germany');
+    });
     when('the user enters the number of events that they want to see', () => {
       AppWrapper.find('.numberOfEvents').simulate('change', { target: { value: 6 } }); // 6 selected as example
     });
@@ -30,8 +34,10 @@ defineFeature(feature, test => {
       expect(AppWrapper.find(NumberOfEvents).state('eventsNumber')).toBe(6);
       expect(AppWrapper.find('.numberOfEvents').prop('value')).toBe(6);
       expect(AppWrapper.find('.Event')).toHaveLength(6);
-
     });
+    and('the events will be for the location currently displayed', () => { 
+      expect(AppWrapper.find('.location').at(0).text()).toBe('Berlin, Germany'); // In the full mock data the location at position 0 is London 
+    });  
   });
   
 });

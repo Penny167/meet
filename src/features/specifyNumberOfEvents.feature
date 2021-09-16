@@ -7,5 +7,7 @@ Then the default number of events is 12
 
 Scenario: User can change the number of events they want to see
 Given the list of events is displayed 
+And the user has selected a city (or all cities)
 When the user enters the number of events that they want to see
 Then the number of events changes to match the number selected by the user
+And the events will be for the location currently displayed

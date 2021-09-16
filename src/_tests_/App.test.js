@@ -103,10 +103,14 @@ describe('<App /> integration', () => {
     const AppWrapper = mount(<App />);
     const CitySearchWrapper = AppWrapper.find(CitySearch);
     CitySearchWrapper.instance().handleItemClicked('Berlin, Germany');
+    const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
+    const eventObject = { target: { value: 4 }}; // Selecting 4 as a new number for test purposes
+    NumberOfEventsWrapper.find('.numberOfEvents').simulate('change', eventObject);
     await getEvents();
     AppWrapper.update();
     expect(AppWrapper.find('.location').at(0).text()).toBe('Berlin, Germany');
-    expect(AppWrapper.find('.Event')).toHaveLength(12);
+    expect(AppWrapper.find('.Event')).toHaveLength(4);
+    AppWrapper.unmount();
   })
 
 });
