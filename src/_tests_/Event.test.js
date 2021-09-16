@@ -24,9 +24,10 @@ describe('<Event /> component', () => {
     expect(EventWrapper.find('.start')).toHaveLength(1); 
   });
 
-  test('start time should be value of dateTime field for each event', () => {
+  test('start time should be value of dateTime field for each event', () => { // This test has been updated post styling because I want timezone to sit inline with start time
     const start = event.start.dateTime;
-    expect(EventWrapper.find('.start').text()).toBe(start); 
+    const timeZone = event.start.timeZone;
+    expect(EventWrapper.find('.start').text()).toBe(start + " " + '(' + timeZone + ')'); 
   });
 
   test('there should be a time zone rendered for each event', () => {
@@ -35,16 +36,17 @@ describe('<Event /> component', () => {
 
   test('time zone should be value of timeZone field for each event', () => {
     const timeZone = event.start.timeZone;
-    expect(EventWrapper.find('.timezone').text()).toBe('(' + timeZone + ')'); 
+    expect(EventWrapper.find('.timezone').text()).toBe(" " + '(' + timeZone + ')'); 
   });
 
   test('there should be an organizer email rendered for each event', () => {
     expect(EventWrapper.find('.email')).toHaveLength(1); 
   });
 
-  test('email should be value of organizer email field for each event', () => {
+  test('email should be value of organizer email field for each event', () => { // This test has been updated post styling because I want location to sit inline with email
     const email = event.organizer.email;
-    expect(EventWrapper.find('.email').text()).toBe(email); 
+    const location = event.location;
+    expect(EventWrapper.find('.email').text()).toBe(email + " | " + location); 
   });
 
   test('there should be a location rendered for each event', () => {
@@ -53,7 +55,7 @@ describe('<Event /> component', () => {
 
   test('location should be value of location field for each event', () => {
     const location = event.location;
-    expect(EventWrapper.find('.location').text()).toBe(location); 
+    expect(EventWrapper.find('.location').text()).toBe(" | " + location); 
   });
 
   test('there should be a show details button rendered for each event', () => {

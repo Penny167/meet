@@ -27,7 +27,7 @@ class CitySearch extends Component {
   render() {
     return(
       <div className="CitySearch">
-        <input className="city" type="text" value={this.state.query} onChange={this.handleInputChange}
+        <input className="city" type="text" placeholder="Search for a city" value={this.state.query} onChange={this.handleInputChange}
           onFocus={() => this.setState({ showSuggestions: true })}>
         </input>
         <ul className="suggestions" style={{ display: this.state.showSuggestions ? "block" : "none"}} >

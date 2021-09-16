@@ -56,7 +56,7 @@ describe('<App /> integration', () => {
     const suggestions = CitySearchWrapper.state('suggestions');
     const selectedIndex = Math.floor(Math.random() * (suggestions.length));
     const selectedCity = suggestions[selectedIndex];
-    await CitySearchWrapper.instance().handleItemClicked(selectedCity);
+    CitySearchWrapper.instance().handleItemClicked(selectedCity);
     const allEvents = await getEvents();
     const eventsToShow = allEvents.filter(event => event.location === selectedCity);
     const slicedeventsToShow = eventsToShow.slice(0, 12); // 12 is the initial state of numberOfEvents
@@ -71,8 +71,8 @@ describe('<App /> integration', () => {
     await getEvents();
     AppWrapper.update();
     expect(AppWrapper.state('events')).toHaveLength(12); // I expect the default number as that is current value of number of events
-    expect(AppWrapper.find('.location').at(0).text()).toBe('London, UK'); // Testing to make sure multiple locations returned in line with mock data
-    expect(AppWrapper.find('.location').at(1).text()).toBe('Berlin, Germany');
+    expect(AppWrapper.find('.location').at(0).text()).toBe(" | " + 'London, UK'); // Testing to make sure multiple locations returned in line with mock data
+    expect(AppWrapper.find('.location').at(1).text()).toBe(" | " + 'Berlin, Germany');
     AppWrapper.unmount();
   })
 
@@ -110,7 +110,7 @@ describe('<App /> integration', () => {
     NumberOfEventsWrapper.find('.numberOfEvents').simulate('change', eventObject);
     await getEvents();
     AppWrapper.update();
-    expect(AppWrapper.find('.location').at(0).text()).toBe('Berlin, Germany');
+    expect(AppWrapper.find('.location').at(0).text()).toBe(" | " + 'Berlin, Germany');
     expect(AppWrapper.find('.Event')).toHaveLength(4);
     AppWrapper.unmount();
   })

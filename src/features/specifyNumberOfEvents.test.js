@@ -36,7 +36,7 @@ defineFeature(feature, test => {
       expect(AppWrapper.find('.Event')).toHaveLength(6);
     });
     and('the events will be for the location currently displayed', () => { 
-      expect(AppWrapper.find('.location').at(0).text()).toBe('Berlin, Germany'); // In the full mock data the location at position 0 is London 
+      expect(AppWrapper.find('.location').at(0).text()).toBe(" | " + 'Berlin, Germany'); // In the full mock data the location at position 0 is London 
     });  
   });
   

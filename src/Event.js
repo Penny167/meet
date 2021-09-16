@@ -13,11 +13,13 @@ class Event extends Component {
     const { event } = this.props;
     return (
       <div className="Event">
-        <h1 className="title">{event.summary}</h1>
-        <p className="start">{event.start.dateTime}</p>
-        <p className="timezone">({event.start.timeZone})</p>
-        <p className="email">{event.organizer.email}</p>
-        <p className="location">{event.location}</p> 
+        <h2 className="title">{event.summary}</h2>
+        <p className="start">{event.start.dateTime}
+          <span className="timezone"> ({event.start.timeZone})</span>
+        </p>
+        <p className="email">{event.organizer.email}
+        <span className="location"> | {event.location}</span>
+        </p>
         <div className="details" style={{ display: this.state.show ? "block" : "none"}}>
           <h3 className="subtitle">About event:</h3>
           <a className="link" href={event.htmlLink}>See details on calendar</a>
