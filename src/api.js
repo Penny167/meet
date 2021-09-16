@@ -74,7 +74,7 @@ const removeQuery = () => {
       let newurl = window.location.protocol + "//" + window.location.host + window.location.pathname; // Represents the current URL minus the authorisation code
       window.history.pushState("", "", newurl); // Resets the URL of the current page to be the version with the auth code removed (note that this does not refresh the page)
   } else { // Is this else statement actually needed? Is this to update the URL if we're working offline? Why do we remove the path?
-    newurl = window.location.protocol + "//" + window.location.host;
+    let newurl = window.location.protocol + "//" + window.location.host;
     window.history.pushState("", "", newurl);
   }
 };

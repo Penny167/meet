@@ -67,7 +67,7 @@ describe('<CitySearch /> component', () => {
   });
 
   test('when user selects suggestion the suggestions list should be hidden', () => {
-    CitySearchWrapper.setState({ query: 'Berlin', showSuggestions: true });
+    CitySearchWrapper.setState({ query: 'Berlin', showSuggestions: undefined });
     CitySearchWrapper.find('.suggestions li').at(0).simulate('click');
     expect(CitySearchWrapper.state('showSuggestions')).toBe(false);
     expect(CitySearchWrapper.find('.suggestions').prop('style')).toEqual({ display: 'none' });

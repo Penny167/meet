@@ -30,77 +30,31 @@ class App extends Component {
     this.mounted = false;
   }
 
-/*  updateNumberOfEvents = (eventCount) => {
-    getEvents()
-    .then((events) => {
-      if (this.state.currentLocation === 'all') {
-        const allLocationsSliced = events.slice(0, eventCount);
-        this.setState(
-          { events: allLocationsSliced,
-            numberOfEvents: eventCount
-          }
-        );
-      } else {
-      const locationEvents = events.filter(event => event.location === this.state.currentLocation);
-      const slicedLocationEvents = locationEvents.slice(0, eventCount);
-      this.setState(
-          { events: slicedLocationEvents,
-            numberOfEvents: eventCount 
-          }
-        );
-      }
-    })
-  } */
 
   updateEvents = (location, eventCount) => {
     getEvents()
     .then((events) => {
-      if (location === 'all') {
-        const allLocationsSliced = events.slice(0, this.state.numberOfEvents);
-        this.setState(
-          { events: allLocationsSliced, currentLocation: 'all' });
-      };
-      if (location !== 'all' && !eventCount) {
-        const locationEvents = events.filter(event => event.location === location);
-        const slicedLocationEvents = locationEvents.slice(0, this.state.numberOfEvents);
-        this.setState(
-          { events: slicedLocationEvents, currentLocation: location });
-      };
-      if (eventCount) {
-        const locationEvents = this.state.currentLocation === 'all' 
+      if (location) {
+        const locationEvents = location === 'all'
         ? events
-        : events.filter(event => event.location === this.state.currentLocation); 
-        const slicedLocationEvents = locationEvents.slice(0, eventCount);
-        this.setState(
-          { events: slicedLocationEvents,
-            numberOfEvents: eventCount 
-          }
-        );
-      }
-    })
-  } 
-
-/*  updateEvents = (location) => {
-    getEvents()
-    .then((events) => {
-      if (location === 'all') {
-        const allLocationsSliced = events.slice(0, this.state.numberOfEvents);
-        this.setState(
-          { events: allLocationsSliced,
-            currentLocation: 'all'
-          }
-        );
-      } else {
-        const locationEvents = events.filter(event => event.location === location);
+        : events.filter(event => event.location === location);
         const slicedLocationEvents = locationEvents.slice(0, this.state.numberOfEvents);
-        this.setState(
-          { events: slicedLocationEvents,
-            currentLocation: location
-          }
-        );
+        this.setState({
+          events: slicedLocationEvents,
+          currentLocation: location
+        });
+      } else {
+        const locationEvents = this.state.currentLocation === 'all'
+        ? events
+        : events.filter(event => event.location === this.state.currentLocation);
+        const slicedLocationEvents = locationEvents.slice(0, eventCount);
+        this.setState({
+          events: slicedLocationEvents,
+          numberOfEvents: eventCount
+        });
       }
     })
-  } */
+  }        
 
 
   render() {

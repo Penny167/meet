@@ -95,7 +95,9 @@ describe('<App /> integration', () => {
     const newNumber = NumberOfEventsWrapper.state().eventsNumber;
     expect(newNumber).toBe(4);
     await getEvents();
+    AppWrapper.update();
     expect(AppWrapper.state('events')).toHaveLength(newNumber);
+    expect(AppWrapper.find('.Event')).toHaveLength(4);
     AppWrapper.unmount();
   })
 
