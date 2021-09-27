@@ -3,7 +3,7 @@ const feature = loadFeature('./src/features/specifyNumberOfEvents.feature');
 import React from 'react';
 import { mount } from 'enzyme';
 import App from '../App';
-import { getEvents } from '../api';
+import { getEvents } from '../api'; // Clean this up after final questions resolved
 import NumberOfEvents from '../NumberOfEvents';
 import CitySearch from '../CitySearch';
 
@@ -29,7 +29,7 @@ defineFeature(feature, test => {
       AppWrapper.find('.numberOfEvents').simulate('change', { target: { value: 6 } }); // 6 selected as example
     });
     then('the number of events changes to match the number selected by the user', async () => {
-      await getEvents();
+  //    await getEvents(); // This is not actually needed
       AppWrapper.update();
       expect(AppWrapper.find(NumberOfEvents).state('eventsNumber')).toBe(6);
       expect(AppWrapper.find('.numberOfEvents').prop('value')).toBe(6);
