@@ -69,12 +69,19 @@ export const getEvents = async () => {
   }
 };
 
-const removeQuery = () => {
-  if (window.history.pushState && window.location.pathname) { // I don't know why window.history.pushState is used here - what is this actually saying?
+/*const removeQuery = () => {
+  if (window.history.pushState && window.location.pathname) { // Check if window.history.pushState is supported
       let newurl = window.location.protocol + "//" + window.location.host + window.location.pathname; // Represents the current URL minus the authorisation code
       window.history.pushState("", "", newurl); // Resets the URL of the current page to be the version with the auth code removed (note that this does not refresh the page)
-  } else { // Is this else statement actually needed? Is this to update the URL if we're working offline? Why do we remove the path?
+  } else { // Is this else statement actually needed? 
     let newurl = window.location.protocol + "//" + window.location.host;
     window.history.pushState("", "", newurl);
-  }
+  } */
+
+const removeQuery = () => {
+    if (!window.history.pushState) { // if no pushState function then there is nothing to do.
+      return;
+    }
+    let newurl = window.location.protocol + "//" + window.location.host + (window.location.pathname || ""); // If there is a pathname then use that, otherwise nothing
+    window.history.pushState("", "", newurl);
 };

@@ -68,7 +68,6 @@ describe('<App /> integration', () => {
     const AppWrapper = mount(<App />);
     const suggestionItems = AppWrapper.find(CitySearch).find('.suggestions li');
     await suggestionItems.at(suggestionItems.length - 1).simulate('click'); // See all cities will always be the last position ie length minus one
-  //  await getEvents();
     AppWrapper.update();
     expect(AppWrapper.state('events')).toHaveLength(12); // I expect the default number as that is current value of number of events
     expect(AppWrapper.find('.location').at(0).text()).toBe(" | " + 'London, UK'); // Testing to make sure multiple locations returned in line with mock data
@@ -81,7 +80,7 @@ describe('<App /> integration', () => {
     expect(AppWrapper.state('numberOfEvents')).toBe(12);
     expect(AppWrapper.state('events')).toEqual([]);
     const testSlicedEvents = mockData.slice(0,12);
-    await getEvents(); // by what mechanism is this updating my app component?
+    await Promise.resolve(); // Using promise.resolve to give component time to update before testing state after componentDidMount()
     expect(AppWrapper.state('events')).toEqual(testSlicedEvents);
     expect(AppWrapper.state('events')).toHaveLength(12);
     AppWrapper.unmount();
@@ -94,7 +93,6 @@ describe('<App /> integration', () => {
     await NumberOfEventsWrapper.find('.numberOfEvents').simulate('change', eventObject);
     const newNumber = NumberOfEventsWrapper.state().eventsNumber;
     expect(newNumber).toBe(4);
-    //await getEvents();
     AppWrapper.update();
     expect(AppWrapper.state('events')).toHaveLength(newNumber);
     expect(AppWrapper.find('.Event')).toHaveLength(4);
@@ -108,7 +106,6 @@ describe('<App /> integration', () => {
     const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
     const eventObject = { target: { value: 4 }}; // Selecting 4 as a new number for test purposes
     await NumberOfEventsWrapper.find('.numberOfEvents').simulate('change', eventObject);
-    // await getEvents();
     AppWrapper.update();
     expect(AppWrapper.find('.location').at(0).text()).toBe(" | " + 'Berlin, Germany');
     expect(AppWrapper.find('.Event')).toHaveLength(4);

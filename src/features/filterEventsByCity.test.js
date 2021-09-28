@@ -38,11 +38,9 @@ defineFeature(feature, test => {
   test('User can select a city from the suggested list', ({ given, and, when, then }) => {
     const AppWrapper = mount(<App />);
     given('user was typing “Berlin” in the city textbox', () => {
-//      AppWrapper = await mount(<App />); // I don't know why we use await here but didn't in the first test
       AppWrapper.find('.city').simulate('change', {target: {value: 'Berlin'}});
     });
     and('the list of suggested cities is showing', () => { 
-//      AppWrapper.update();
       expect(AppWrapper.find('.suggestions li')).toHaveLength(2);
     });
     when('the user selects a city (e.g., “Berlin, Germany”) from the list', () => {
