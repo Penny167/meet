@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { InfoAlert } from './Alert';
 
 class CitySearch extends Component {
   
@@ -27,6 +28,7 @@ class CitySearch extends Component {
   render() {
     return(
       <div className="CitySearch">
+        <InfoAlert text={this.state.infoText} />
         <input className="city" type="text" placeholder="Search for a city" value={this.state.query} onChange={this.handleInputChange}
           onFocus={() => this.setState({ showSuggestions: true })}>
         </input>
