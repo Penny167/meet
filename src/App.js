@@ -5,6 +5,7 @@ import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import { getEvents, extractLocations } from './api';
+import { WarningAlert } from './Alert';
 
 class App extends Component {
   
@@ -12,7 +13,8 @@ class App extends Component {
     events: [],
     locations: [],
     numberOfEvents: 12,
-    currentLocation: 'All cities'
+    currentLocation: 'All cities',
+    warningText: ''
   }
 
   componentDidMount () {
@@ -53,6 +55,13 @@ class App extends Component {
           numberOfEvents: eventCount
         });
       }
+      if (this.state.numberOfEvents < 33 && this.state.numberOfEvents > this.state.events.length) {
+        this.state.events.length === 1 ? 
+          this.setState({ warningText: 'There is only 1 event for this location'})
+          :this.setState({ warningText: `There are only ${this.state.events.length} events for this location`})
+      } else {
+        this.setState({ warningText: ''});
+      }
     })
   }        
 
@@ -62,6 +71,7 @@ class App extends Component {
       <div className="App">
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
         <NumberOfEvents updateEvents={this.updateEvents} />
+        <WarningAlert text={this.state.warningText} />
         <EventList events={this.state.events} />
       </div>
     );
