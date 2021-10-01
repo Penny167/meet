@@ -12,7 +12,7 @@ class App extends Component {
     events: [],
     locations: [],
     numberOfEvents: 12,
-    currentLocation: 'all'
+    currentLocation: 'All cities'
   }
 
   componentDidMount () {
@@ -35,7 +35,7 @@ class App extends Component {
     getEvents()
     .then((events) => {
       if (location) {
-        const locationEvents = location === 'all'
+        const locationEvents = location === 'All cities'
         ? events
         : events.filter(event => event.location === location);
         const slicedLocationEvents = locationEvents.slice(0, this.state.numberOfEvents);
@@ -44,7 +44,7 @@ class App extends Component {
           currentLocation: location
         });
       } else {
-        const locationEvents = this.state.currentLocation === 'all'
+        const locationEvents = this.state.currentLocation === 'All cities'
         ? events
         : events.filter(event => event.location === this.state.currentLocation);
         const slicedLocationEvents = locationEvents.slice(0, eventCount);
