@@ -50,9 +50,14 @@ const getToken = async (code) => {
 
 export const getEvents = async () => {
   NProgress.start();
-  if (window.location.href.startsWith("http://localhost")) { // use mock data if working offline
+  if (window.location.href.startsWith("http://localhost")) { // use mock data if running locally
     NProgress.done();
     return mockData;
+  }
+  if (!navigator.onLine) {
+    const data = localStorage.getItem("lastEvents");
+    NProgress.done();
+    return data?JSON.parse(events).events:[];; // Why is events the argument and not data?
   }
   const token = await getAccessToken();
   if (token) {
