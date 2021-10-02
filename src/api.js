@@ -57,7 +57,7 @@ export const getEvents = async () => {
   if (!navigator.onLine) {
     const data = localStorage.getItem("lastEvents");
     NProgress.done();
-    return data?JSON.parse(events).events:[];; // Why is events the argument and not data?
+    return data?JSON.parse(data).events:[]; // I have changed the argument to data (events used in the notes)
   }
   const token = await getAccessToken();
   if (token) {
