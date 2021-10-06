@@ -5,7 +5,7 @@ import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import { getEvents, extractLocations } from './api';
-import { WarningAlert, InfoAlert } from './Alert';
+import { InfoAlert } from './Alert';
 
 class App extends Component {
   
@@ -14,8 +14,8 @@ class App extends Component {
     locations: [],
     numberOfEvents: 12,
     currentLocation: 'All cities',
-    warningText: '',
-    infoText:''
+    infoText: '',
+    onlineStatusText:''
   }
 
   componentDidMount () {
@@ -58,15 +58,15 @@ class App extends Component {
       }
       if (this.state.numberOfEvents < 33 && this.state.numberOfEvents > this.state.events.length) {
         this.state.events.length === 1 ? 
-          this.setState({ warningText: 'There is only 1 event for this location'})
-          :this.setState({ warningText: `There are only ${this.state.events.length} events for this location`})
-      } else {
-        this.setState({ warningText: ''});
-      }
-      if (!navigator.onLine) {
-        this.setState({ infoText: 'App is currently working offline. Events displayed are last saved version'})
+          this.setState({ infoText: 'There is only 1 event for this location'})
+          :this.setState({ infoText: `There are only ${this.state.events.length} events for this location`})
       } else {
         this.setState({ infoText: ''});
+      }
+      if (!navigator.onLine) {
+        this.setState({ onlineStatusText: 'App is currently working offline. Events displayed are latest saved version.'})
+      } else {
+        this.setState({ onlineStatusText: ''});
       }
     })
   }        
@@ -75,10 +75,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <InfoAlert text={this.state.infoText} />
+        <InfoAlert text={this.state.onlineStatusText} />
+        <h2>Meet App</h2>
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
         <NumberOfEvents updateEvents={this.updateEvents} />
-        <WarningAlert text={this.state.warningText} />
+        <InfoAlert text={this.state.infoText} />
         <EventList events={this.state.events} />
       </div>
     );

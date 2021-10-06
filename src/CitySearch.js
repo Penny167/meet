@@ -43,6 +43,7 @@ class CitySearch extends Component {
     return(
       <div className="CitySearch">
         <InfoAlert text={this.state.infoText} />
+        <p>Choose your nearest city:</p>
         <input className="city" type="text" placeholder="Search for a city" value={this.state.query} onChange={this.handleInputChange}
           onFocus={() => this.setState({ showSuggestions: true })}>
         </input>
