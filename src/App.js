@@ -5,7 +5,7 @@ import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import { getEvents, extractLocations } from './api';
-import { WarningAlert } from './Alert';
+import { WarningAlert, InfoAlert } from './Alert';
 
 class App extends Component {
   
@@ -14,7 +14,8 @@ class App extends Component {
     locations: [],
     numberOfEvents: 12,
     currentLocation: 'All cities',
-    warningText: ''
+    warningText: '',
+    infoText:''
   }
 
   componentDidMount () {
@@ -62,6 +63,11 @@ class App extends Component {
       } else {
         this.setState({ warningText: ''});
       }
+      if (!navigator.onLine) {
+        this.setState({ infoText: 'App is currently working offline. Events displayed are last saved version'})
+      } else {
+        this.setState({ infoText: ''});
+      }
     })
   }        
 
@@ -69,6 +75,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <InfoAlert text={this.state.infoText} />
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
         <NumberOfEvents updateEvents={this.updateEvents} />
         <WarningAlert text={this.state.warningText} />
