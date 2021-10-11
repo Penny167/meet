@@ -1,6 +1,52 @@
 # Meet app
 
-Meet is a serverless, progressive web application built using React that uses the Google Calendar API to fetch upcoming events and displays them to users. Users can filter results based on locations of interest, expand results to see event details and view information graphically as well as in list form. A full set of features, user stories and scenarios is provided below.
+Meet is a serverless, progressive web application built using React that uses the Google Calendar API to fetch events and then displays them to users. Users can filter results based on locations of interest, expand results to see event details and view information graphically as well as in list form. 
+
+The main focus for this project was to practice developing a simple app using a test-driven approach. A full set of features, user stories and scenarios was created up front as the basis for the development work and these are included below. The test files are located inside the src folder: unit and integration tests inside the _tests_ directory and acceptance tests inside the features directory. One feature was also tested end-to-end using Puppeteer and this file is located in the _tests_ directory.
+
+A secondary objective was to practice using serverless functions (with AWS Lambda), in this case to manage the OAuth authentication process required to get access to the Google Calendar API, which contains the events data used in the app. Note that as this project was designed for educational purposes, the events are not real and occur in the past.
+
+Finally the app was converted to a progressive web app using a manifest file and service worker, before being deployed using github pages.
+
+## Overview of main features
+
+On first visiting the app, the user is presented with a welcome screen and invited to sign in to the app using Google. This initiaties the authentication process, following which the main app screen is displayed. This contains input boxes where users can select locations and the number of events that they would like to see displayed.
+
+By default the app displays 12 events from across all locations. The view also displays two charts: a pie chart showing the events by genre, and a scatter chart showing the events split by location. The charts update when the user selects a location of interest and/or changes the number of events that they wish to see displayed.
+
+Alerts are displayed if the users types a location that does not exist, if they request a number of events in excess of the maximum (32), if they request a number of events in excess of that available for the selected location, and if they are working offline.
+
+Below the charts is a list of the events returned for the location selected. These are collapsed by default to display summary information but can be expanded by clicking the "show details" button to provide additional details.
+
+The app is responsive and will adjust automtically to fit the screen size available.
+
+The app is progressive and can be used offline, where it will display events cached during the most recent visit.
+
+## Installation
+
+The project can be cloned from the project repository on github. Packages can then be installed using npm install.
+
+## Overview of main packages used
+
+The project was created using create-react-app as the build tool. 
+
+Create-react-app incorporates the test runner Jest by default. In addition the package Enzyme was used, which specifically facilitates testing of React components, allowing them to be rendered "shallowly" in isolation for unit testing and fully rendered for integration testing. Enzyme requires an adapter to be compatible with React v17 and this is imported and configured within the setupTests.js file.
+
+After the components were developed, acceptance tests were performed using jest-cucumber. Finally one feature was tested end to end using Puppeteer. 
+
+The framework Serverless was used to develop and deploy the serverless architecture, which is used within the project to manage the user authentication process. Serverless was installed globally so is not included in the package.json file. The AWS template in Serverless was used to create an "auth-server" directory, which contains the files where the serverless functions were created and configured.
+
+AWS provides an access key ID and secret key that are required to configure Serverless to deploy functions directly to AWS. They can be obtained via the AWS management console.
+
+The Serverless functions manage the authentication process with Google under the OAuth 2 protocol, whereby users can authorise the app to access the Google Calendar API. The app must first be registered with Google, during which process Google will provide credentials. These must be stored in a config.json file within the "auth-server" directory. This file has been added to the project .gitignore to keep the credentials secret.
+
+The package Googleapis was installed within the "auth-server" directory and used to create the functions that direct the app to the required Google API endpoints.
+
+In addition to the key packages described above, the following were also used: axios was used to send requests to the API, atatus has been used to monitor app performance, nprogress is used to display loading status for the events, and finally recharts has been used to build 2 charts to display event information visually.
+
+Comments have been used throughout to explain more complex areas of the code.
+
+## App features and user stories used for development
 
 Key Features:
 - User can filter events by city

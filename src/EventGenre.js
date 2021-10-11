@@ -12,7 +12,7 @@ const EventGenre = ({ events }) => {
   const getData = () => {
     const genres = ['React', 'JavaScript', 'Node', 'jQuery', 'AngularJS'];
     const data = genres.map((genre) => {
-      const value = events.filter((event) => event.summary.includes(genre)).length;
+      const value = events.filter(({ summary }) => summary.split(' ').includes(genre)).length;
       return { name: genre, value: value };
     });
     return data;
@@ -22,6 +22,7 @@ const EventGenre = ({ events }) => {
 
   return (
     <ResponsiveContainer height={400}>
+      <h3>Events by Genre</h3>
       <PieChart width={400} height={400}>
         <Pie
           data={data}
