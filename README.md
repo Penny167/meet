@@ -1,6 +1,6 @@
 # Meet app
 
-Meet is a serverless, progressive web application built using React that uses the Google Calendar API to fetch events and then displays them to users. Users can filter results based on locations of interest, expand results to see event details and view information graphically as well as in list form. 
+Meet is a serverless, progressive web application built using React that uses the Google Calendar API to fetch events and displays them to users. Users can filter results based on locations of interest, expand results to see event details and view information graphically as well as in list form. 
 
 The main focus for this project was to practice developing a simple app using a test-driven approach. A full set of features, user stories and scenarios was created up front as the basis for the development work and these are included below. The test files are located inside the src folder: unit and integration tests inside the _tests_ directory and acceptance tests inside the features directory. One feature was also tested end-to-end using Puppeteer and this file is located in the _tests_ directory.
 
@@ -46,7 +46,7 @@ In addition to the key packages described above, the following were also used: a
 
 Comments have been used throughout to explain more complex areas of the code.
 
-## App features and user stories used for development
+## App features and user stories used in development
 
 Key Features:
 - User can filter events by city
