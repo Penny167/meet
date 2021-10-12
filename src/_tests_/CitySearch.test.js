@@ -35,7 +35,7 @@ describe('<CitySearch /> component', () => {
 
   test('list of suggestions rendered should match list in component state', () => {
     const locations = extractLocations(mockData);
-    CitySearchWrapper.setState({ suggestions: locations }); // set the suggestions state with mock data
+    CitySearchWrapper.setState({ suggestions: locations }); // Set the suggestions state with mock data
     const suggestions = CitySearchWrapper.state('suggestions');
     expect(CitySearchWrapper.find('.suggestions li')).toHaveLength(suggestions.length + 1);
     for (let i = 0; i < suggestions.length; i += 1) {

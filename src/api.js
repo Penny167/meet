@@ -28,7 +28,7 @@ export const getAccessToken = async () => {
 
 export const checkToken = async (accessToken) => {
   const result = await fetch(
-    `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}` // what does a successful request to this address return?
+    `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}` 
   )
   .then((res) => res.json())
   .catch((error) => error.json());
@@ -73,15 +73,6 @@ export const getEvents = async () => {
     return result.data.events;
   }
 };
-
-/*const removeQuery = () => {
-  if (window.history.pushState && window.location.pathname) { // Check if window.history.pushState is supported
-      let newurl = window.location.protocol + "//" + window.location.host + window.location.pathname; // Represents the current URL minus the authorisation code
-      window.history.pushState("", "", newurl); // Resets the URL of the current page to be the version with the auth code removed (note that this does not refresh the page)
-  } else { // Is this else statement actually needed? 
-    let newurl = window.location.protocol + "//" + window.location.host;
-    window.history.pushState("", "", newurl);
-  } */
 
 const removeQuery = () => {
     if (!window.history.pushState) { // if no pushState function then there is nothing to do.

@@ -24,7 +24,7 @@ describe('<NumberOfEvents /> component', () => {
 
   test('expect when user types into input the eventsNumber state changes', () => {
     NumberOfEventsWrapper.setState({ eventsNumber: 12 });
-    const eventObject = { target: { value: 10 }}; // 10 selected just as an example for testing purposes
+    const eventObject = { target: { value: 10 }}; // 10 selected as an example for testing purposes
     NumberOfEventsWrapper.find('.numberOfEvents').simulate('change', eventObject);
     expect(NumberOfEventsWrapper.state('eventsNumber')).toBe(10);
   })
