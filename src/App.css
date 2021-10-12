@@ -228,7 +228,7 @@ input[type="number"] {
   }
 }
 
-@media screen and (min-width: 540px) and (max-width: 750px) {
+@media screen and (min-width: 321px) and (max-width: 750px) {
   p {
     font-size: 13px;
   }
