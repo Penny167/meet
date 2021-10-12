@@ -217,3 +217,33 @@ input[type="number"] {
     margin: 0 auto;
   }
 } 
+
+@media screen and (max-width: 320px) {
+  p {
+    font-size: 11px;
+  }
+  .button {
+    font-size: 11px;
+    padding: 4px 2px;
+  }
+}
+
+@media screen and (min-width: 540px) and (max-width: 750px) {
+  p {
+    font-size: 13px;
+  }
+  .button {
+    font-size: 11px;
+    padding: 2px 4px;
+  }
+}
+
+@media screen and (min-width: 751px) and (max-width: 1000px) {
+  p {
+    font-size: 15px;
+  }
+  .button {
+    font-size: 12px;
+    padding: 4px 6px;
+  }
+}
