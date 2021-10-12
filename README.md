@@ -2,9 +2,9 @@
 
 Meet is a serverless, progressive web application built using React that uses the Google Calendar API to fetch events and displays them to users. Users can filter results based on locations of interest, expand results to see event details and view information graphically as well as in list form. 
 
-The main focus for this project was to practice developing a simple app using a test-driven approach. A full set of features, user stories and scenarios was created up front as the basis for the development work and these are included below. The test files are located inside the src folder: unit and integration tests inside the _tests_ directory and acceptance tests inside the features directory. One feature was also tested end-to-end using Puppeteer and this file is located in the _tests_ directory.
+The main focus for this project was to practice developing a simple app using a test-driven approach. A full set of features, user stories and scenarios was created up front as the basis for the development work and these are included below. The test files are located inside the src folder: unit and integration tests inside the tests directory and acceptance tests inside the features directory. One feature was also tested end-to-end using Puppeteer and this file is located in the tests directory.
 
-A secondary objective was to practice using serverless functions (with AWS Lambda), in this case to manage the OAuth authentication process required to get access to the Google Calendar API, which contains the events data used in the app. Note that as this project was designed for educational purposes, the events are not real and occur in the past.
+A secondary objective was to practice using serverless functions (with AWS Lambda), in this case to manage the OAuth2 authentication process required to get access to the Google Calendar API, which contains the events data used in the app. Note that as this project was designed for educational purposes, the events are not real and occur in the past.
 
 Finally the app was converted to a progressive web app using a manifest file and service worker, before being deployed using github pages.
 
@@ -38,7 +38,7 @@ The framework Serverless was used to develop and deploy the serverless architect
 
 AWS provides an access key ID and secret key that are required to configure Serverless to deploy functions directly to AWS. They can be obtained via the AWS management console.
 
-The Serverless functions manage the authentication process with Google under the OAuth 2 protocol, whereby users can authorise the app to access the Google Calendar API. The app must first be registered with Google, during which process Google will provide credentials. These must be stored in a config.json file within the "auth-server" directory. This file has been added to the project .gitignore to keep the credentials secret.
+The Serverless functions manage the authentication process with Google under the OAuth 2 protocol, whereby users can authorise the app to access the Google Calendar API by virtue of their Google credentials. The app must first be registered with Google, during which process Google will provide app credentials. These must be stored in a config.json file within the "auth-server" directory. This file has been added to the project .gitignore to keep the credentials secret.
 
 The package Googleapis was installed within the "auth-server" directory and used to create the functions that direct the app to the required Google API endpoints.
 
@@ -61,7 +61,7 @@ User stories and scenarios:
 
   Scenario 1: When a user hasn’t searched for a city, show upcoming events from all cities.
   
-  Given the user hasn't searched for any city, when the user opens the app, then the user should see a list of ALL upcoming events.
+  Given the user hasn't searched for any city, when the user opens the app, then the user should see a list of upcoming events from all locations.
 
   Scenario 2: User should see a list of suggestions when they search for a city.
   
@@ -99,14 +99,10 @@ User stories and scenarios:
 
   Scenario 1: Show cached data when there’s no internet connection.
   
-  Given the user is offline, when the user accesses the app, then they are able to see cached data.
-
-  Scenario 2: Show error when user changes the settings (city, time range).
-  
-  Given the user is using cached data while working offline, when the user tries to change the app settings for city and time range, then they are presented with an error message explaining that this is not possible while working offline.
+  Given the user is offline, when the user accesses the app, then the main features of the app are still available using events cached during the last online session and an alert will notify the user that this is the case.
 
 5. As a user, I should be able to see event data presented graphically in addition to seeing it in list form, so that I can more easily digest the information at a summary level.
 
-  Scenario 1: Show a chart with the number of upcoming events in each city.
+  Scenario 1: When the app is launched, show a chart with the number of upcoming events in each city
   
-  Given the main page is open and the user hasn’t selected a city, when the user selects the option to show event data for all cities as a chart, then a chart with the number of upcoming events in each city is displayed.
+  Given the user hasn’t selected a city, when the app is launched, then a chart with the number of upcoming events in each city is displayed.
