@@ -1,12 +1,12 @@
 # Meet app
 
-The Meet app is a serverless, progressive web application built using React that uses the Google Calendar API to fetch information about upcoming educational events for full-stack developers. Users can filter the results by location, expand events to see detailed event descriptions, and view summary information about the subject areas and the numbers of events by location using charts.
+Meet app is a serverless, progressive web application built using React that uses the Google Calendar API to fetch information about upcoming educational events for full-stack developers. Users can filter the results by location, expand events to see detailed event descriptions, and view summary information about the event subject areas and the number of events by location using charts.
 
 ![screenshot](MeetApp.png) 
 
 The objectives of this project were:
-  - to build a simple react app using a test-driven development approach;
-  - to implement a remote authentication server that uses the OAuth2.0 protocol to authenticate users and authorize requests to the Google Calendar API using their Google credentials.
+  - To build a simple react app using a test-driven development approach;
+  - To implement a remote authentication server that uses the OAuth2.0 protocol to authenticate users and authorize requests to the Google Calendar API using their Google credentials.
 
 Further details about the testing performed can be found in the Testing section below.
 An overview of the server implementation is provided in the Installation and Set up section.
@@ -15,19 +15,18 @@ Please note that as this project was built for educational purposes, the events 
 
 ## Live website
 
-Visit the Meet app [here](https://penny167.github.io/meet/)
+Visit Meet app [here](https://penny167.github.io/meet/)
 
 ## Key features
 
-- The main app view displays a list of upcoming developer events showing the event title, date, time, location and a contact email. A "Show details" button toggles a full event description and a link to the details on the user's Google calendar.
-- By default 12 events are displayed across all locations. However, users can search for specific locations and specify the number of events that they wish to see by typing their selections in to input boxes placed above the events list. 
+- Meet App displays a list of upcoming developer events showing for each event: the title, date, time, location and a contact email. A "Show details" button toggles a full event description and a link to the details on the user's Google calendar.
+- By default 12 events are displayed across all locations. However, users can search for specific event locations and specify the number of events that they wish to see displayed, by typing their selections in to input boxes located above the events list. 
 - A progress bar appears whilst the requested data is being fetched.
-- Alerts are displayed if: a location is requested that does not exist; the requested number of events exceeds the events available for the location specified; and if the requested number of events exceeds the maximum number that the page can display. 
-- The view also displays two charts implemented using Recharts: a pie chart showing the events by subject area, and a scatter chart showing the number of events by location. The charts update when the user selects a location of interest and/or changes the number of events that they wish to see displayed.
-- The Meet app is progressive and can be used offline, where it will display events cached during the most recent visit. An alert indicates if the user is working offline.
+- Alerts are displayed if a location is requested that does not exist, if the requested number of events exceeds the events available for the location specified, and if the requested number of events exceeds the maximum number that the page can display. 
+- The view also displays two charts implemented using Recharts: a pie chart showing the events summarised by subject area, and a scatter chart showing the number of events by location. The charts update when the user selects a location of interest and/or changes the number of events that they wish to see displayed.
+- Meet app is progressive and can be used offline, where it will display events cached during the most recent visit. An alert indicates if the user is working offline.
 - The app is responsive and adjusts automtically to fit the screen size available.
-- The Meet app uses OAuth2 for efficient user authentication and authorization. On visiting the welcome page, users simply sign in with Google then provide consent to access their Google calendar. This completes the authorization process and takes users directly to the main app view where the events are displayed.
-- This process is implemented serverlessly using AWS Lambda to provide the backend. 
+- OAuth2.0 is used to implement efficient user authentication and authorization. On visiting the welcome page, users simply sign in with Google and provide consent to access their Google calendar. This completes the authorization process and takes users directly to the main app view displaying the events. The process is implemented serverlessly using AWS Lambda to provide the backend. 
 - The framework Serverless is used to deploy the functions that handle the authentication and authorization requests to the remote server. The functions themselves are created using Google APIs to access the Google calendar API and authenticate users using Google credentials. 
 
 ## Technologies
