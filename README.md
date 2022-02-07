@@ -31,7 +31,7 @@ Visit Meet app [here](https://penny167.github.io/meet/)
 - In addition to the events, the view displays two charts implemented using Recharts: a pie chart showing the events summarised by subject area, and a scatter chart showing the number of events by location. The charts update when the user selects a location of interest and/or changes the number of events that they wish to see displayed.
 - Meet app is progressive and can be used offline where it will display events cached during the most recent visit. An alert indicates to the user if they are working offline.
 - The app is responsive and adjusts automtically to fit the screen size available.
-- OAuth2.0 is used to implement efficient user authentication and authorization. On visiting the welcome page, users simply sign in with Google and provide consent to access their Google calendar. This completes the authorization process and takes users directly to the main app view displaying the events. The process is implemented serverlessly using AWS Lambda to provide the backend. 
+- The app uses OAuth2.0 to implement efficient user authentication and authorization. On visiting the welcome page, users simply sign in with Google and provide consent to access their Google calendar. This completes the authorization process and takes users directly to the main app view displaying the events. This process is implemented serverlessly using AWS Lambda to provide the backend. 
 
 ## Technologies
 
