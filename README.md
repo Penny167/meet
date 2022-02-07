@@ -21,15 +21,14 @@ Visit Meet app [here](https://penny167.github.io/meet/)
 
 ## Key features
 
-- Meet App displays a list of upcoming developer events showing for each event: the title, date, time, location and a contact email. A "Show details" button toggles a full event description and a link to the details on the user's Google calendar.
-- By default 12 events are displayed across all locations. However, users can search for specific event locations and specify the number of events that they wish to see displayed, by typing their selections in to input boxes located above the events list. 
-- A progress bar appears whilst the requested data is being fetched.
-- Alerts are displayed if a location is requested that does not exist, if the requested number of events exceeds the events available for the location specified, and if the requested number of events exceeds the maximum number that the page can display. 
-- The view also displays two charts implemented using Recharts: a pie chart showing the events summarised by subject area, and a scatter chart showing the number of events by location. The charts update when the user selects a location of interest and/or changes the number of events that they wish to see displayed.
-- Meet app is progressive and can be used offline, where it will display events cached during the most recent visit. An alert indicates if the user is working offline.
+- Meet App displays a list of upcoming developer events showing for each event: the title, date, time, location and a contact email. A "Show details" button toggles a full event description and a link to the details on the user's Google calendar (illustrated above).
+- By default, 12 events are displayed spanning all locations. However, users can search for specific event locations and specify the number of events that they wish to see displayed, by typing their selections in to input boxes located above the events list. 
+- A progress bar appears whilst the page updates to reflect user selections.
+- Alerts are displayed to notify the user if a location requested does not exist, if the requested number of events exceeds the events available for the location specified, and if the requested number of events exceeds the maximum number that the page can display. 
+- In addition to the events, the view displays two charts implemented using Recharts: a pie chart showing the events summarised by subject area, and a scatter chart showing the number of events by location. The charts update when the user selects a location of interest and/or changes the number of events that they wish to see displayed.
+- Meet app is progressive and can be used offline where it will display events cached during the most recent visit. An alert indicates to the user if they are working offline.
 - The app is responsive and adjusts automtically to fit the screen size available.
 - OAuth2.0 is used to implement efficient user authentication and authorization. On visiting the welcome page, users simply sign in with Google and provide consent to access their Google calendar. This completes the authorization process and takes users directly to the main app view displaying the events. The process is implemented serverlessly using AWS Lambda to provide the backend. 
-- The framework Serverless is used to deploy the functions that handle the authentication and authorization requests to the remote server. The functions themselves are created using Google APIs to access the Google calendar API and authenticate users using Google credentials. 
 
 ## Technologies
 
@@ -57,6 +56,8 @@ The test files are located inside the src folder: unit and integration tests ins
 The project can be cloned from the project repository on github. Packages can then be installed using npm install.
 
 Create-react-app incorporates the test runner Jest by default. Enzyme requires an adapter to be compatible with React v17 and this is imported and configured within the setupTests.js file.
+
+The framework Serverless is used to deploy the functions that handle the authentication and authorization requests to the remote server. The functions themselves are created using Google APIs to access the Google calendar API and authenticate users using Google credentials. 
 
 Serverless was installed globally so is not included in the package.json file. The AWS template in Serverless was used to create an "auth-server" directory, which contains the files where the serverless functions were created and configured.
 
