@@ -1,12 +1,10 @@
 # Meet app
 
+![screenshot](MeetApp.png) 
+
 Meet app is a serverless, progressive web application built using React, that uses the Google Calendar API to fetch information about upcoming educational events for full-stack developers. 
 
 Users can filter the results by location, expand events to see detailed event descriptions, and view summary information about the event subject areas and the number of events by location, using charts.
-<br>
-<br>
-
-![screenshot](MeetApp.png) 
 
 The objectives of this project were:
   - To build a simple react app using a test-driven development approach;
@@ -30,7 +28,7 @@ Visit Meet app [here](https://penny167.github.io/meet/)
 - Alerts are displayed to notify the user if a location requested does not exist, if the requested number of events exceeds the events available for the location specified, and if the requested number of events exceeds the maximum number that the page can display. 
 - In addition to the events, the view displays two charts implemented using Recharts: a pie chart showing the events summarised by subject area, and a scatter chart showing the number of events by location. The charts update when the user selects a location of interest and/or changes the number of events that they wish to see displayed.
 - Meet app is progressive and can be used offline where it will display events cached during the most recent visit. An alert indicates to the user if they are working offline.
-- The app is responsive and adjusts automtically to fit the screen size available.
+- The app is responsive and adjusts automatically to fit the screen size available.
 - The app uses OAuth2.0 to implement efficient user authentication and authorization. On visiting the welcome page, users simply sign in with Google and provide consent to access their Google calendar. This completes the authorization process and takes users directly to the main app view displaying the events. This process is implemented serverlessly using AWS Lambda to provide the backend. 
 
 ## Technologies
@@ -67,6 +65,9 @@ Serverless was installed globally so is not included in the package.json file. T
 AWS provides an access key ID and secret key that are required to configure Serverless to deploy functions directly to AWS. They can be obtained via the AWS management console.
 
 The Serverless functions manage the authentication process with Google under the OAuth 2 protocol, whereby users can authorise the app to access the Google Calendar API by virtue of their Google credentials. The app must first be registered with Google, during which process Google will provide app credentials. These must be stored in a config.json file within the "auth-server" directory. This file has been added to the project .gitignore to keep the credentials secret.
+
+Published on github pages
+Do I want the break or not, picture position etc.
 
 ## Author
 Github: [@penny167](https://github.com/Penny167)
