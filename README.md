@@ -74,8 +74,9 @@ At this stage you will have the Meet app files and node modules required to buil
 2) Register your app with Google to obtain OAuth credentials
 3) Set up an authorisation server with AWS Lambda and deploy the serverless functions
 4) Replace existing code references to the website and credentials with those specific to your project
-
+<br>
 The detailed instructions for these steps are as follows:
+<br>
 
 **1) Setting up the project and generating a URL**<br>
 Create a github repository for your project. This will allow you to use github pages to create the live website that will host the app and interact with the authorisation server. Your github pages URL will be: https://YOUR_GITHUB_USERNAME.github.io/YOUR_REPOSITORY_NAME
@@ -84,6 +85,7 @@ Create a github repository for your project. This will allow you to use github p
 - In the WelcomeScreen.jsx file, update the href for the privacy policy. 
 - Initialize git in the project directory, add your repository URL and push the changes.
 The gh-pages package is already installed and configured to publish your app to the live website when the project is deployed.
+<br>
 
 **2) Registering the app with Google**<br>
 To implement OAuth2.0 and access the Google Calendar API, you must first register your app with Google to provide your site's details and obtain the credentials that are required during the authorisation process:
@@ -98,6 +100,7 @@ To implement OAuth2.0 and access the Google Calendar API, you must first registe
   "CLIENT_SECRET": "YOUR_GOOGLE_CLIENT_SECRET",
   "CALENDAR_ID": "fullstackwebdev@careerfoundry.com"
 }
+<br>
 
 **3) Setting up the authorisation server**<br>
 
