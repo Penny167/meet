@@ -74,14 +74,14 @@ At this stage you will have the Meet app files and node modules required to buil
 2) Register your app with Google to obtain OAuth credentials
 3) Set up an authorisation server with AWS Lambda and deploy the serverless functions
 4) Replace existing code references to the website and credentials with those specific to your project
-<br>
+
 The detailed instructions for these steps are as follows:
-<br>
+<br><br>
 
 **1) Setting up the project and generating a URL**<br>
-Create a github repository for your project. This will allow you to use github pages to create the live website that will host the app and interact with the authorisation server. Your github pages URL will be: https://YOUR_GITHUB_USERNAME.github.io/YOUR_REPOSITORY_NAME
+Create a github repository for your project. This will allow you to use github pages to create the live website that will host the app and interact with the authorisation server. Your github pages URL will be: https://your_github_username.github.io/your_repository_name
 - Replace the homepage URL in the package.json file with your github pages URL. 
-- In the auth-server directory handler.js file, update the credentials object properties: redirect_uris and javascript_origins. 
+- In the auth-server directory handler.js file, update the credentials object properties: redirect_uris (including / at the end of the URL) and javascript_origins. 
 - In the WelcomeScreen.jsx file, update the href for the privacy policy. 
 - Initialize git in the project directory, add your repository URL and push the changes.
 The gh-pages package is already installed and configured to publish your app to the live website when the project is deployed.
@@ -89,11 +89,11 @@ The gh-pages package is already installed and configured to publish your app to 
 
 **2) Registering the app with Google**<br>
 To implement OAuth2.0 and access the Google Calendar API, you must first register your app with Google to provide your site's details and obtain the credentials that are required during the authorisation process:
-- Navigate to the [Google developers console](https://console.developers.google.com). Click Create project, name your project, click Create. Select Enable APIs and Services, search for and select the Google Calendar API, Enable it.
-- Now you need to set up credentials. Click create credentials and select the following options: Google Calendar API, Called from a web browser using JavaScript, Accessing user data, External users. Click create.
-- Next complete the OAuth consent screen where you will provide your contact details as the developer responsible for the app. Add yourself as a test user. Then complete the Scopes section: select ../auth/calendar.readonly. Click Update then Save and continue.
-- Now create your OAuth client ID: complete the fields specifying Web app and your app name. For authorized JavaScript origins end the domain from your github pages site URL. For the Authorized redirect URIs use the full github pages URL (this mirrors the changes you made to the handler.js file above so everything is now pointing to your own github pages website for your app). Click Create. Your credentials will now be available to download and will always be available on the credentials page of your google console.
-- Finally, inside the auth-server directory, create a config.json file. Inside the file, create the following object, replacing the values with the credentials you obtained from Google and your project ID (you will find the project ID on your Google dashboard): 
+- Navigate to the [Google developers console](https://console.developers.google.com). Click create project, name your project, click create. Select enable APIs and services, search for and select the Google Calendar API, enable it.
+- Now you need to set up credentials. Click create credentials and select the following options: Google Calendar API, called from a web browser using JavaScript, accessing user data, external users. Click create.
+- Next complete the OAuth consent screen where you will provide your contact details as the developer responsible for the app. Add yourself as a test user. Then complete the scopes section: select ../auth/calendar.readonly. Click update then save and continue.
+- Now create your OAuth client ID: complete the fields specifying web app and your app name. For authorized JavaScript origins enter the domain from your github pages site URL. For the authorized redirect URIs use the full github pages URL with / at the end (this mirrors the changes you made to the handler.js file above, so everything is now pointing to your own github pages website for your app). Click create. Your credentials will now be available to download and will also be available on the credentials page of your google console.
+- Finally, **inside the auth-server directory**, create a config.json file. Inside the file, create the following object, replacing the values with the credentials you obtained from Google and your project ID (you will find the project ID on your Google dashboard): 
 {
   "CLIENT_ID": "YOUR_GOOGLE_CLIENT_ID",
   "PROJECT_ID": "YOUR_GOOGLE_PROJECT_ID",
