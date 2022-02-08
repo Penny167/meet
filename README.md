@@ -6,9 +6,9 @@ Meet app is a serverless, progressive web application built using React, that us
 
 Users can filter events by location, expand events to see detailed event descriptions, and view summary information about the event subject areas and the number of events by location, using charts.
 
-The objectives of this project were:
-  - To build a simple react app using a test-driven development approach; and
-  - To implement a remote authentication server that uses the OAuth2.0 protocol to authenticate users and authorize their requests to the Google Calendar API using their Google credentials.
+The objectives of this project were to:
+  - **Build a simple react app using a test-driven development approach; and**
+  - **Implement a remote authentication server that uses the OAuth2.0 protocol to authenticate users and authorize their requests to the Google Calendar API using their Google credentials.**
 
 Further details about the testing performed can be found in the Testing section below. 
 
@@ -70,10 +70,10 @@ npm install
 Navigate to the auth-server directory and run the command again. This will install the modules required by the auth-server specifically.
 
 At this stage you will have the Meet app files and node modules required to build the project components. However, in order to run the app using data from the Google Calendar API, you will need to complete the following additional steps: 
-1) Set up your project on Github and use github pages to provide a live website URL for your app
-2) Register your app with Google to obtain OAuth credentials
-3) Set up an authorisation server with AWS Lambda and deploy the serverless functions
-4) Replace existing code references to the website and credentials with those specific to your project
+**1) Set up your project on Github and use github pages to provide a live website URL for your app**
+**2) Register your app with Google to obtain OAuth credentials**
+**3) Set up an authorisation server with AWS Lambda and deploy the serverless functions**
+**4) Replace existing code references to the website and credentials with those specific to your project**
 
 The detailed instructions for these steps are as follows:
 <br><br>
