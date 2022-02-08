@@ -70,14 +70,14 @@ npm install
 Navigate to the auth-server directory and run the command again. This will install the modules required by the auth-server specifically.
 
 At this stage you will have the Meet app files and node modules required to build the project components. However, in order to run the app using data from the Google Calendar API, you will need to complete the following additional steps: 
-- 1) Set up your project on Github and use github pages to provide a live website URL for your app
-- 2) Register your app with Google to obtain OAuth credentials
-- 3) Set up an authorisation server with AWS Lambda and deploy the serverless functions
-- 4) Replace existing code references to the website and credentials with those specific to your project
+1) Set up your project on Github and use github pages to provide a live website URL for your app
+2) Register your app with Google to obtain OAuth credentials
+3) Set up an authorisation server with AWS Lambda and deploy the serverless functions
+4) Replace existing code references to the website and credentials with those specific to your project
 
 The detailed instructions for these steps are as follows:
 
-**1) Setting up the project and generating a URL**
+**1) Setting up the project and generating a URL**<br>
 Create a github repository for your project. This will allow you to use github pages to create the live website that will host the app and interact with the authorisation server. Your github pages URL will be: https://YOUR_GITHUB_USERNAME.github.io/YOUR_REPOSITORY_NAME
 - Replace the homepage URL in the package.json file with your github pages URL. 
 - In the auth-server directory handler.js file, update the credentials object properties: redirect_uris and javascript_origins. 
@@ -85,7 +85,7 @@ Create a github repository for your project. This will allow you to use github p
 - Initialize git in the project directory, add your repository URL and push the changes.
 The gh-pages package is already installed and configured to publish your app to the live website when the project is deployed.
 
-**2) Registering the app with Google**
+**2) Registering the app with Google**<br>
 To implement OAuth2.0 and access the Google Calendar API, you must first register your app with Google to provide your site's details and obtain the credentials that are required during the authorisation process:
 - Navigate to the [Google developers console](https://console.developers.google.com). Click Create project, name your project, click Create. Select Enable APIs and Services, search for and select the Google Calendar API, Enable it.
 - Now you need to set up credentials. Click create credentials and select the following options: Google Calendar API, Called from a web browser using JavaScript, Accessing user data, External users. Click create.
@@ -99,7 +99,7 @@ To implement OAuth2.0 and access the Google Calendar API, you must first registe
   "CALENDAR_ID": "fullstackwebdev@careerfoundry.com"
 }
 
-**3) Setting up the authorisation server**
+**3) Setting up the authorisation server**<br>
 
 
 
