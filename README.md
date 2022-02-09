@@ -2,15 +2,15 @@
 
 ![screenshot](MeetApp.png) 
 
-Meet app is a serverless, progressive web application that uses the Google Calendar API to provide information about upcoming educational events for full-stack developers. Users can filter events by location, expand events to see detailed descriptions and view summary information using charts.
+Meet app is a serverless, progressive web application that uses the Google Calendar API to provide information about upcoming educational events for full-stack developers. Users can filter events by location, expand events to see detailed descriptions and view summary event information using charts.
 
 The coding objectives of this project were to:
-- Build a simple React app using a test-driven approach; and
-- Set up and configure a remote server to perform user authentication and authorisation using OAuth2.0.
+- Build a simple React app using a test-driven approach
+- Set up and configure a remote server to perform user authentication and authorisation using OAuth2.0
 
 Information about the testing approach, test runner, packages and files is included in the Testing section below. The Installation and set up section details the processes followed to register the app to use OAuth with Google and to set up the remote server with AWS Lambda.
 
-Note that as this project was built for educational purposes, the events themselves are fictitious. 
+Note that as this project was built for educational purposes, the events fetched from the Google Calendar are fictitious. 
 
 ## Live website
 
@@ -28,7 +28,7 @@ Visit Meet app [here](https://penny167.github.io/meet/)
 - The app uses OAuth2.0 to implement efficient user authentication and authorization. On visiting the welcome page, users simply sign in with Google and provide consent to access their Google calendar. This completes the authorization process and takes users directly to the main page displaying the events. This process is implemented serverlessly using AWS Lambda to provide the backend.
 - Meet app is published to Github pages and is accessible using the live website link above. 
 
-## Technologies
+## Technologies used
 
 - React
 - Jest
@@ -64,13 +64,18 @@ To install Meet app run:
 ```
 npm install
 ```
-Navigate to the auth-server directory and run the command again. This will install the modules required by the auth-server files specifically.
+Navigate to the auth-server directory and run the command again. This will install the modules required by files inside the auth-server specifically.
 
-At this stage your local repository should contain: the Meet app files and node modules required to build the project components; a handler.js file containing the serverless functions used to handle the OAuth process; and a serverless.yml file where the serverless functions are configured. However, in order to recreate the project in full using data from the Google Calendar API and implementing the OAuth process, you will need to complete the following additional steps: 
-1. Set up your project on Github and use github pages to provide a live website URL for your app**
-2. Register your app with Google to obtain OAuth credentials**
-3. Set up an authorisation server with AWS Lambda and deploy the serverless functions**
-4. Replace existing code references to the website and credentials with those specific to your project and deploy to the live website**
+At this stage your local repository should contain: 
+- the Meet app files and node modules required to build the project components
+- a handler.js file containing the serverless functions used to handle the OAuth process
+- a serverless.yml file where the serverless functions are configured. 
+
+However, in order to recreate the project in full using data from the Google Calendar API and implementing the OAuth process, you will need to complete the following additional steps: 
+1. Set up your project on Github and use github pages to provide a live website URL for your app
+2. Register your app with Google to obtain OAuth credentials
+3. Set up an authorisation server with AWS Lambda and (re)deploy the serverless functions
+4. Save the reconfigured files to github and deploy to the live website
 
 The detailed instructions for these steps are as follows:
 
@@ -118,8 +123,8 @@ serverless config credentials --provider aws --key YOURACCESSKEYID --secret YOUR
 serverless deploy
 ```
 
-**4. Replace existing code and credentials**<br>
-By this stage your local files should be configured to run the app from your own remote server and hosted on your own live website linked to your gitub repository. To deploy the app commit all of your changes and push to your main github branch then run:
+**4. Saving the reconfigured files to github and deploying to the live website**<br>
+By this stage your local files should be configured to run the app from your own remote server and hosted on your own live website linked to your github repository. To deploy the app commit all of your changes and push to your main github branch then run:
 ```
 npm run deploy
 ```
