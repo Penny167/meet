@@ -1,8 +1,8 @@
 # Meet app
 
-Meet app is a serverless, progressive web application that uses the Google Calendar API to provide information about upcoming educational events for full-stack developers. Users can filter events by location, expand events to see detailed descriptions and view summary information using charts.
-
 ![screenshot](MeetApp.png) 
+
+Meet app is a serverless, progressive web application that uses the Google Calendar API to provide information about upcoming educational events for full-stack developers. Users can filter events by location, expand events to see detailed descriptions and view summary information using charts.
 
 The coding objectives of this project were to:
 - Build a simple React app using a test-driven approach; and
