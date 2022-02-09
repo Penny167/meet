@@ -8,7 +8,7 @@ The coding objectives of this project were to:
 - Build a simple React app using a test-driven approach; and
 - Set up and configure a remote server to perform user authentication and authorisation using OAuth2.0.
 
-Details about the testing approach, test runner, packages and files are included in the Testing section below. 
+Information about the testing approach, test runner, packages and files is included in the Testing section below. The Set up and Installation section details the processes for registering the app to use OAuth with Google and setting up the remoate server with AWS Lambda.
 
 Note that as this project was built for educational purposes, the events themselves are fictitious. The app is published to Github pages and can be viewed using the live website link below.
 
@@ -63,9 +63,9 @@ To install Meet app, in the root project directory run:
 ```
 npm install
 ```
-Navigate to the auth-server directory and run the command again. This will install the modules required by the auth-server specifically.
+Navigate to the auth-server directory and run the command again. This will install the modules required by the auth-server files specifically.
 
-At this stage your local repository should contain the Meet app files and node modules required to build the project components; as well as a handler.js file containing the serverless functions used to handle the OAuth process, and a serverless.yml file where they are configured. However, in order to run the app using data from the Google Calendar API and recreate the project in full, you will need to complete the following additional steps: 
+At this stage your local repository should contain: the Meet app files and node modules required to build the project components; a handler.js file containing the serverless functions used to handle the OAuth process; and a serverless.yml file where the serverless functions are configured. However, in order to recreate the project in full using data from the Google Calendar API and implementing the OAuth process, you will need to complete the following additional steps: 
 **1. Set up your project on Github and use github pages to provide a live website URL for your app**
 **2. Register your app with Google to obtain OAuth credentials**
 **3. Set up an authorisation server with AWS Lambda and deploy the serverless functions**
