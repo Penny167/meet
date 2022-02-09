@@ -6,7 +6,7 @@ Meet app is a serverless, progressive web application that uses the Google Calen
 
 The coding objectives of this project were to:
 - Build a simple React app using a test-driven approach
-- Set up and configure a remote server to perform user authentication and authorisation using OAuth2.0
+- Set up and configure a cloud-based server hosted on AWS Lambda to perform user authentication and authorisation using OAuth2.0
 
 Information about the testing approach, test runner, packages and files is included in the Testing section below. The Installation and set up section details the processes followed to register the app to use OAuth with Google and to set up the remote server with AWS Lambda.
 
@@ -67,19 +67,19 @@ npm install
 Navigate to the auth-server directory and run the command again. This will install the modules required by files inside the auth-server specifically.
 
 At this stage your local repository should contain: 
-- the Meet app files and node modules required to build the project components
-- a handler.js file containing the serverless functions used to handle the OAuth process
-- a serverless.yml file where the serverless functions are configured. 
+- The Meet app files and node modules required to build the project components
+- A handler.js file containing the serverless functions used to handle the OAuth process
+- A serverless.yml file where the serverless functions are configured. 
 
 However, in order to recreate the project in full using data from the Google Calendar API and implementing the OAuth process, you will need to complete the following additional steps: 
-1. Set up your project on Github and use github pages to provide a live website URL for your app
-2. Register your app with Google to obtain OAuth credentials
-3. Set up an authorisation server with AWS Lambda and (re)deploy the serverless functions
-4. Save the reconfigured files to github and deploy to the live website
+- **Set up your project on Github and use github pages to provide a live website URL for your app**
+- **Register your app with Google to obtain OAuth credentials**
+- **Set up an authorisation server with AWS Lambda and (re)deploy the serverless functions**
+- **Save the reconfigured files to github and deploy to the live website**
 
 The detailed instructions for these steps are as follows:
 
-**1. Setting up the project and generating a URL**<br>
+**Setting up the project and generating a URL**<br>
 Create a github repository for your project. This will allow you to use github pages to create the live website that will host the app and interact with the authorisation server. Your github pages URL will be: https://your_github_username.github.io/your_repository_name. Next:
 - Replace the homepage URL in the package.json file with your github pages URL. 
 - In the auth-server directory handler.js file, update the credentials object properties: redirect_uris (including / at the end of the URL) and javascript_origins. 
@@ -88,7 +88,7 @@ Create a github repository for your project. This will allow you to use github p
 The gh-pages package is already installed and configured to publish your app to the live website when the project is deployed.
 
 
-**2. Registering the app with Google**<br>
+**Registering the app with Google**<br>
 To implement OAuth2.0 and access the Google Calendar API, you must first register your app with Google to obtain the credentials that are required during the authorisation process:
 - Navigate to the [Google developers console](https://console.developers.google.com). Click create project, name your project, click create. Select enable APIs and services, search for and select the Google Calendar API, enable it.
 - Now you need to set up credentials. Click create credentials and select the following options: Google Calendar API, called from a web browser using JavaScript, accessing user data, external users. Click create.
@@ -104,7 +104,7 @@ To implement OAuth2.0 and access the Google Calendar API, you must first registe
 This file is already included within the .gitignore file so your credentials will remain secure.
 
 
-**3. Setting up the remote authorisation server**<br>
+**Setting up the remote authorisation server**<br>
 At this stage the project already contains an auth-server directory and the serverless functions needed to manage the authorisation process. Now these need to be deployed to your own AWS Lambda remote server.
 - Start by creating an Amazon Web Services account [here](https://aws.amazon.com/lambda/?c=ser&sec=srv)
 - Next log in to the management console, click on your username and select My Security Credentials from the dropdown menu.
@@ -123,7 +123,7 @@ serverless config credentials --provider aws --key YOURACCESSKEYID --secret YOUR
 serverless deploy
 ```
 
-**4. Saving the reconfigured files to github and deploying to the live website**<br>
+**Saving the reconfigured files to github and deploying to the live website**<br>
 By this stage your local files should be configured to run the app from your own remote server and hosted on your own live website linked to your github repository. To deploy the app commit all of your changes and push to your main github branch then run:
 ```
 npm run deploy
