@@ -10,7 +10,7 @@ The coding objectives of this project were to:
 
 Information about the testing approach, test runner, packages and files is included in the Testing section below. The Installation and set up section details the steps followed to register the app with Google and to set up the cloud server with AWS Lambda.
 
-Note that as this project was built for educational purposes, the events fetched from the Google Calendar are fictitious. 
+Note that as this project was built for educational purposes the events fetched from the Google Calendar are fictitious. 
 
 ## Live website
 
@@ -26,7 +26,7 @@ Visit Meet app [here](https://penny167.github.io/meet/)
 - Meet app is progressive and can be used offline where it will display events cached during the most recent visit. An alert indicates to the user when they are working offline.
 - The app is responsive and adjusts automatically to fit the screen size available.
 - The app uses OAuth2.0 to implement efficient user authentication and authorisation. On visiting the welcome page users click to sign in with Google and provide consent to access their Google calendar. This completes the authorisation process and takes users directly to the main page displaying the events.
-- The cloud-based server that handles the authorisation process is hosted by AWS Lambda. The framework Serverless is used to configure the endpoints and deploy the event handlers.
+- The cloud-based server that handles the authorisation process is hosted by AWS Lambda. The framework Serverless was used to configure the endpoints and deploy the event handlers.
 - Meet app is published to Github pages and is accessible using the live website link above. 
 
 ## Technologies used
@@ -124,7 +124,7 @@ serverless config credentials --provider aws --key YOURACCESSKEYID --secret YOUR
 serverless deploy
 ```
 
-**Saving the reconfigured files to github and deploying to the live website**<br>
+**Saving the reconfigured files to github and deploying to the live website**<br><br>
 By this stage your local files should be configured to run the app using your new cloud-based server and hosted on the live website URL linked to your github repository. To deploy the app, commit all of your changes and push to your main github branch then run:
 ```
 npm run deploy
@@ -132,7 +132,7 @@ npm run deploy
 Your app should now be live at your github pages URL!
 
 ## Future features
-- As the focus of this project was on developing functionality using a test-driven approach, only basic styling has been used for the initial release. The next release will use React-Bootstrap to implement a more sophisticated UI.
+- The focus of this project was on developing functionality using a test-driven approach therefore basic styles have been used for the initial release. The next release will use React-Bootstrap to build a more sophisticated UI.
 - Apps registered with Google are considered to be in test and display a warning until a full verification process has been completed. Google verification will be sought on completion of the updated UI.
 
 ## Author
