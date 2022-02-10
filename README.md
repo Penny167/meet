@@ -29,7 +29,7 @@ Visit Meet app [here](https://penny167.github.io/meet/)
 - The cloud-based server that handles the authorisation process is hosted by AWS Lambda. The framework Serverless was used to configure the endpoints and deploy the event handlers.
 - Meet app is published to Github pages and is accessible using the live website link above. 
 
-## Technologies used
+## Technologies
 
 - React
 - Jest
