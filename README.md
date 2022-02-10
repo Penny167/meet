@@ -132,7 +132,7 @@ npm run deploy
 Your app should now be live at your github pages URL!
 
 ## Future features
-- The focus of this project was on developing functionality using a test-driven approach therefore basic styling has been used for the initial release. The next release will use React-Bootstrap to build a more sophisticated UI.
+- The focus of this project was on developing functionality using a test-driven approach therefore basic styling has been used for the initial release. The next release will use React-Bootstrap to build a more sophisticated user interface.
 - Apps registered with Google are considered to be in test and display a warning until a full verification process has been completed. Google verification will be sought on completion of the updated UI.
 
 ## Author
